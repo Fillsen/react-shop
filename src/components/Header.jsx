@@ -54,7 +54,8 @@ function Header() {
                         <Grid container spacing={2} justify='center'>
                             <Grid item>
                                 <Button
-                                    href='https://github.com/Fillsen'
+                                    href='https://github.com/Fillsen/react-shop'
+                                    rel='noreferrer'
                                     target='_blank'
                                     variant='contained'
                                     color='primary'>
@@ -64,6 +65,7 @@ function Header() {
                             <Grid item>
                                 <Button
                                     href='https://tlgg.ru/Fillsen'
+                                    rel='noreferrer'
                                     target='_blank'
                                     variant='outlined'
                                     color='primary'>
