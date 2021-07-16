@@ -1,6 +1,6 @@
 {
   "name": "vitrina",
-  "home": "https://Fillsen.github.io/react-shop",
+  "homepage": "https://Fillsen.github.io/react-shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
