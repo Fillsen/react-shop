@@ -51,7 +51,7 @@ function Header() {
                         This simple project made by Fillsen with Material-UI, React JS & FortniteAPI
                     </Typography>
                     <div className={classes.buttons}>
-                        <Grid container spacing={2} justify='center'>
+                        <Grid container spacing={2} justifyContent='center'>
                             <Grid item>
                                 <Button
                                     href='https://github.com/Fillsen/react-shop'
