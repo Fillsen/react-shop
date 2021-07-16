@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {ShopContext} from "../context";
+
 import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -33,15 +35,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function BasketList(props) {
+function BasketList() {
+    const classes = useStyles();
     const {
         order = [],
         handleBasketShow = Function.prototype, // Ловим ф-ии
-        decrementQuantity = Function.prototype, // Ловим ф-ии
-        incrementQuantity = Function.prototype, // Ловим ф-ии
-        removeFromBasket = Function.prototype // Ловим ф-ии
-    } = props;
-    const classes = useStyles();
+    } = useContext(ShopContext);
 
     // Калькулятор общей стоимости
     const totalPrice = order.reduce((sum, el) => {
@@ -63,9 +62,6 @@ function BasketList(props) {
                     order.length ? order.map(item => (
                         <BasketItem
                             key={item.id} {...item}
-                            removeFromBasket={removeFromBasket} //Пробрасываем еще дальше
-                            decrementQuantity={decrementQuantity}
-                            incrementQuantity={incrementQuantity}
                         />
                     )) : <Typography align='center'>Nothing here</Typography>
                 }

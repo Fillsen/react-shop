@@ -1,7 +1,9 @@
 import {ItemSingle} from "./ItemSingle";
-import React from "react";
+import {ShopContext} from "../context";
+import React, {useContext} from "react";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     gridcontainer: {
@@ -10,17 +12,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function ItemList(props) {
-    const {items = [], addToBasket = Function.prototype } = props;
+function ItemList() {
     const classes = useStyles();
+    const {items = []} = useContext(ShopContext);
     if (!items.length) {
-        return <h3>Nothing here</h3>
+        return <Typography variant='h1' align='center'>Nothing here</Typography>
     }
     //TODO: Each child in a list should have a unique 'key' prop
     return <Grid className={classes.gridcontainer} container spacing={4}>
         {items.map(item => (
             <Grid item xs={12} sm={6} md={4} lg={3}>
-                <ItemSingle key={item.id} {...item} addToBasket={addToBasket} />
+                <ItemSingle key={item.id} {...item} />
             </Grid>
         ))}
     </Grid>

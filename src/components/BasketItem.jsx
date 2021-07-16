@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {ShopContext} from "../context";
 // MUI
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -21,10 +22,9 @@ function BasketItem(props) {
         description,
         icon,
         quantity,
-        removeFromBasket = Function.prototype,
-        decrementQuantity = Function.prototype,
-        incrementQuantity = Function.prototype
     } = props;
+
+    const {removeFromBasket, incrementQuantity, decrementQuantity} = useContext(ShopContext)
 
 // Результат
     return <ListItem divider>
@@ -45,8 +45,8 @@ function BasketItem(props) {
             align='right'
         />
         <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete">
-                <DeleteIcon onClick={() => removeFromBasket(id)}/>
+            <IconButton onClick={() => removeFromBasket(id)} edge="end" aria-label="delete">
+                <DeleteIcon/>
             </IconButton>
         </ListItemSecondaryAction>
     </ListItem>

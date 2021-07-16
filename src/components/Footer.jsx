@@ -15,8 +15,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(3, 2),
         marginTop: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
     },
 }))
 

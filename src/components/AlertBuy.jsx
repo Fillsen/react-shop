@@ -1,5 +1,5 @@
-import React from 'react';
-import {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react';
+import {ShopContext} from "../context";
 import {makeStyles} from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 
@@ -14,8 +14,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AlertBuy(props) {
-    const {name = '', closeAlert = Function.prototype} = props;
     const classes = useStyles();
+    const {alertName: name = '', closeAlert = Function.prototype} = useContext(ShopContext);
+
     useEffect(() => {
         const timerId = setTimeout(closeAlert, 3000);
         return () => {
@@ -24,10 +25,10 @@ function AlertBuy(props) {
     }, [name])
 
     return (
-        <div className={classes.root}>
-            <Alert severity="success">{name} добавлен в козину</Alert>
-        </div>
-    )
+    <div className={classes.root}>
+        <Alert severity="success">{name} добавлен в козину</Alert>
+    </div>
+)
 }
 
 export {AlertBuy}
