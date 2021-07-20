@@ -46,7 +46,7 @@ function ItemSingle(props) {
                 id={id}
             />
             <CardContent className={classes.content}>
-                <Typography gutterBottom variant="h6" component="h2">
+                <Typography noWrap gutterBottom variant="h6">
                     {name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

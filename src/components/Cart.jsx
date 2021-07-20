@@ -20,7 +20,8 @@ function Cart(props) {
     const {order, handleBasketShow = Function.prototype} = useContext(ShopContext);
     const quantity = order.length
     return <div onClick={handleBasketShow} className={classes.root}>
-        {quantity ? <Button
+        {quantity ?
+            <Button
                 position="fixed"
                 variant="contained"
                 color="primary"

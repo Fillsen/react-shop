@@ -2,7 +2,6 @@ import React, { createContext, useReducer } from 'react'
 import {reducer} from "./reducer";
 
 export const ShopContext = createContext()
-
 const initialState = {
     items: [],
     loading: true,

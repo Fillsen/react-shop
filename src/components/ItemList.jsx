@@ -18,8 +18,7 @@ function ItemList() {
     if (!items.length) {
         return <Typography variant='h1' align='center'>Nothing here</Typography>
     }
-    //TODO: Each child in a list should have a unique 'key' prop
-    return <Grid className={classes.gridcontainer} container spacing={4}>
+    return <Grid container className={classes.gridcontainer} spacing={4}>
         {items.map(item => (
             <Grid item xs={12} sm={6} md={4} lg={3}>
                 <ItemSingle key={item.id} {...item} />

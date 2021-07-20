@@ -48,7 +48,7 @@ function Header() {
                         React Shop
                     </Typography>
                     <Typography variant='h5' align='center' color='textSecondary' gutterBottom>
-                        This simple project made by Fillsen with Material-UI, React JS & FortniteAPI
+                        This simple project made by Fillsen with Material-UI, React JS, Reducer & FortniteAPI
                     </Typography>
                     <div className={classes.buttons}>
                         <Grid container spacing={2} justifyContent='center'>
