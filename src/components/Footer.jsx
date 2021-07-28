@@ -36,7 +36,7 @@ function Footer() {
                     </IconButton>
                 </Typography>
                 <Typography variant='subtitle1' align='center' color='textSecondary'>
-                    Above are some ways to contact me in {new Date().getFullYear()}
+                    Above are some ways to contact me
                 </Typography>
             </Container>
         </div>

@@ -41,9 +41,14 @@ function ItemSingle(props) {
     // Результат
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image={full_background} //TODO: Нужна проверка на наличие картинки, иначе-то
+            <CardMedia
+                className={classes.media}
+                image={full_background} //TODO: Нужна проверка на наличие картинки, иначе-то
                 alt={name}
                 id={id}
+                onError={(e)=>{
+                    e.target.image = 'https://via.placeholder.com/300x420';
+                }}
             />
             <CardContent className={classes.content}>
                 <Typography noWrap gutterBottom variant="h6">

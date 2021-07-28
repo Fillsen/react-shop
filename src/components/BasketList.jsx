@@ -9,30 +9,33 @@ import Typography from "@material-ui/core/Typography";
 import {BasketItem} from "./BasketItem";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from '@material-ui/icons/Close';
-import Container from "@material-ui/core/Container";
-import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
+import Drawer from "@material-ui/core/Drawer";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import TelegramIcon from "@material-ui/icons/Telegram";
+import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 
 // Стили
 const useStyles = makeStyles((theme) => ({
-    root: {
-        margin: 0,
-        backgroundColor: theme.palette.background.paper,
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        borderRadius: '3px',
+    list: {
+        minWidth: 315,
+        maxWidth: 315,
+    },
+    fullList: {
+        width: "auto",
     },
     title: {
-        margin: theme.spacing(2, 2, 2)
+        margin: theme.spacing(2, 2, 2),
     },
     close: {
         cursor: "pointer",
         position: "absolute",
-        top: '0.5rem',
-        right: '0.1rem'
-    }
+        top: "0.5rem",
+        right: "0.1rem",
+    },
+    drawer: {
+        maxWidth: "280px",
+    },
 }));
 
 function BasketList() {
@@ -42,22 +45,32 @@ function BasketList() {
         handleBasketShow = Function.prototype, // Ловим ф-ии
     } = useContext(ShopContext);
 
+    // Draw
+
+
     // Калькулятор общей стоимости
     const totalPrice = order.reduce((sum, el) => {
         return sum + el.price * el.quantity
     }, 0)
 
 // Результат
+    // Проверка на наличие товаров и автозакрытие TODO: Известен баг с автопоявлением
+    if (order.length === 0) {
+        return null
+    }
     return (
-        <Container variant='outlined' className={classes.root}>
-            <List>
+        <Drawer // TODO: Нужна проверка на display для адаптивности
+            anchor='right'
+            open={true}
+            variant='persistent'
+        >
+            <List className={classes.list}>
                 <Typography variant="h6" className={classes.title}>
                     Basket
                 </Typography>
                 <IconButton aria-label="delete" className={classes.close} onClick={handleBasketShow}>
                     <CloseIcon/>
                 </IconButton>
-                <Divider/>
                 {
                     order.length ? order.map(item => (
                         <BasketItem
@@ -67,10 +80,21 @@ function BasketList() {
                 }
                 <ListItem>
                     <ListItemText primary={totalPrice} secondary='Total price'/>
-                    <Button variant='contained' color='primary'>Оформить</Button>
+                    <Button variant='contained' color='primary'>Checkout</Button>
                 </ListItem>
+                <Typography variant='h6' align='center' gutterBottom>
+                    <IconButton aria-label="Github">
+                        <GitHubIcon/>
+                    </IconButton>
+                    <IconButton aria-label="Telegram">
+                        <TelegramIcon/>
+                    </IconButton>
+                    <IconButton aria-label="Mail">
+                        <AlternateEmailIcon/>
+                    </IconButton>
+                </Typography>
             </List>
-        </Container>
+        </Drawer>
     );
 }
 

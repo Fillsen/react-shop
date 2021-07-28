@@ -3,7 +3,7 @@ import {ShopContext} from "../context";
 import {makeStyles} from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
         position: 'fixed',
         top: '5%',
@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%, -50%)',
         minWidth: '40%'
     },
-}));
+});
 
-function AlertBuy(props) {
+function AlertBuy() {
     const classes = useStyles();
     const {alertName: name = '', closeAlert = Function.prototype} = useContext(ShopContext);
 
@@ -25,10 +25,8 @@ function AlertBuy(props) {
     }, [name])
 
     return (
-    <div className={classes.root}>
-        <Alert severity="success">{name} добавлен в козину</Alert>
-    </div>
-)
+        <Alert className={classes.root} variant='filled' severity="success">{name} добавлен в козину</Alert>
+    )
 }
 
 export {AlertBuy}
